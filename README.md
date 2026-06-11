@@ -18,6 +18,15 @@ User: "Show me top 5 customers by revenue in Q3"
   ↓
 DataPilot: Generates SQL → Executes → Charts → Insights
 ```
+Home page
+<img width="1915" height="905" alt="image" src="https://github.com/user-attachments/assets/aa6bbb93-009b-4ad2-a4ac-13714f612e4c" />
+Data Health Analyzer
+<img width="1915" height="905" alt="image" src="https://github.com/user-attachments/assets/8f625295-8753-4e30-a103-b9b458551e62" />
+SQL Query (join)
+<img width="1915" height="905" alt="image" src="https://github.com/user-attachments/assets/de780013-1391-4bd1-aa50-16b6a22de471" />
+Insights and Follow up questions
+<img width="1915" height="905" alt="image" src="https://github.com/user-attachments/assets/de57461e-c911-4eb6-a36d-96912887f059" />
+
 
 ---
 
