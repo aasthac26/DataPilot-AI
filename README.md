@@ -1,6 +1,6 @@
 # 🗄️ DataPilot AI
 
-> **Ask questions about your data in plain English. Get SQL, charts, and insights instantly.**
+> **Ask questions about your data in plain English. Get SQL queries, charts, and insights instantly.**
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-datapilot--ai--ac.streamlit.app-ff4b4b?style=for-the-badge&logo=streamlit)](https://datapilot-ai-ac.streamlit.app/)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
