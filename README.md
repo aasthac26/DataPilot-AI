@@ -52,7 +52,7 @@ Every generated SQL is validated for safety before execution. DROP, DELETE, UPDA
 ## 🏗️ Architecture
 
 ```
-<img width="607" height="546" alt="image" src="https://github.com/user-attachments/assets/cee38dfd-271b-4225-8a53-779831c7da5e" />
+![DataPilot AI Architecture](assets/architecture.png)
 
 ```
 ## 🚀 Quick Start
