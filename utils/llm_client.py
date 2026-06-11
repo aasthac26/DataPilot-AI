@@ -7,6 +7,7 @@ Model: llama3-70b-8192 (free, fast, excellent at SQL)
 import os
 from groq import Groq
 from dotenv import load_dotenv
+import time
 
 load_dotenv()
 
@@ -25,6 +26,8 @@ def _get_client() -> Groq:
         )
     return Groq(api_key=api_key)
 
+import time
+import random
 
 def chat(
     system_prompt: str,
@@ -32,24 +35,29 @@ def chat(
     temperature: float = TEMPERATURE,
     max_tokens: int = MAX_TOKENS,
 ) -> str:
-    """
-    Send a system + user message to Groq and return the assistant's reply as a string.
-    This is the single function all modules use to talk to the LLM.
-    """
     client = _get_client()
-
-    response = client.chat.completions.create(
-        model=MODEL,
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_message},
-        ],
-        temperature=temperature,
-        max_tokens=max_tokens,
-    )
-
-    return response.choices[0].message.content.strip()
-
+    last_error = None
+    for attempt in range(3):
+        try:
+            response = client.chat.completions.create(
+                model=MODEL,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_message},
+                ],
+                temperature=temperature,
+                max_tokens=max_tokens,
+            )
+            return response.choices[0].message.content.strip()
+        except Exception as e:
+            last_error = e
+            err_str = str(e).lower()
+            if any(x in err_str for x in ["rate_limit", "429", "too many requests"]) and attempt < 2:
+                wait = (2 ** attempt) + random.uniform(0, 1)
+                time.sleep(wait)
+                continue
+            raise
+    raise last_error
 
 def chat_with_history(
     system_prompt: str,

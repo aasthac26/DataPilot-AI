@@ -75,11 +75,16 @@ def load_file(uploaded_file) -> Tuple[pd.DataFrame, str]:
     ext = filename.rsplit(".", 1)[-1].lower()
 
     if ext == "csv":
-        try:
-            df = pd.read_csv(uploaded_file, encoding="utf-8")
-        except UnicodeDecodeError:
-            uploaded_file.seek(0)
-            df = pd.read_csv(uploaded_file, encoding="latin-1")
+        raw = uploaded_file.read()
+        df = None
+        for enc in ["utf-8", "utf-8-sig", "cp1252", "latin-1"]:
+            try:
+                df = pd.read_csv(io.StringIO(raw.decode(enc)))
+                break
+            except (UnicodeDecodeError, LookupError):
+                continue
+        if df is None:
+            df = pd.read_csv(io.StringIO(raw.decode("latin-1", errors="replace")))
 
     elif ext in ("xlsx", "xls"):
         xl = pd.ExcelFile(uploaded_file)
@@ -202,14 +207,18 @@ def _safe_samples(series: pd.Series, n: int = 3) -> list:
 
 
 def _looks_like_datetime(samples: list) -> bool:
-    """Heuristic: does this list of strings look like dates/datetimes?"""
+    """
+    Heuristic: does this list of strings look like dates/datetimes?
+    Requires digits + a date separator pattern — avoids false positives
+    on negative numbers like -500 which also contain '-'.
+    """
     if not samples:
         return False
-    # Only match actual date separators — NOT month name abbreviations
-    date_hints = ["-", "/", ":"]
+    DATE_PATTERN = re.compile(r'\d{2,4}[-/]\d{1,2}[-/]\d{1,4}')
+    DATETIME_PATTERN = re.compile(r'\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}')
     hits = 0
     for s in samples:
-        s_lower = str(s).lower()
-        if any(h in s_lower for h in date_hints):
+        s_str = str(s).strip()
+        if DATE_PATTERN.search(s_str) or DATETIME_PATTERN.search(s_str):
             hits += 1
     return hits >= max(1, len(samples) // 2)

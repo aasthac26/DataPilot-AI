@@ -11,6 +11,7 @@ import sqlite3
 import pandas as pd
 from typing import Tuple, Optional
 import uuid
+import glob, time
 
 
 DB_DIR = os.path.join(os.path.dirname(__file__), "..", "database", "sessions")
@@ -79,3 +80,10 @@ def list_tables(db_path: str) -> list:
 def get_table_preview(db_path: str, table_name: str, n: int = 5) -> pd.DataFrame:
     """Return the first n rows of a table."""
     return execute_query(db_path, f"SELECT * FROM {table_name} LIMIT {n};")
+
+def cleanup_old_sessions(max_age_hours: int = 24):
+    """Delete session DBs older than max_age_hours."""
+    cutoff = time.time() - (max_age_hours * 3600)
+    for db_file in glob.glob(os.path.join(DB_DIR, "*.db")):
+        if os.path.getmtime(db_file) < cutoff:
+            os.remove(db_file)
