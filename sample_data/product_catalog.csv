@@ -1,0 +1,16 @@
+product_id,product_name,category,brand,cost_price,selling_price,stock_quantity,margin_pct
+301,Laptop Pro,Laptop,Apple,60000,85000,50,29.4
+302,Laptop Air,Laptop,Apple,45000,65000,80,30.8
+303,iPhone 15,Phone,Apple,70000,90000,120,22.2
+304,Samsung S24,Phone,Samsung,65000,80000,100,18.8
+305,iPad,Tablet,Apple,50000,65000,60,23.1
+306,Kindle,E-Reader,Amazon,8000,12000,200,33.3
+307,AirPods,Earphones,Apple,12000,18000,150,33.3
+308,Sony WH,Headphones,Sony,20000,28000,80,28.6
+309,Apple Watch,Smartwatch,Apple,35000,45000,90,22.2
+310,Fitbit,Smartwatch,Google,8000,12000,110,33.3
+311,Canon DSLR,Camera,Canon,55000,75000,40,26.7
+312,Nikon DSLR,Camera,Nikon,48000,65000,35,26.2
+313,Dell Monitor,Monitor,Dell,22000,30000,70,26.7
+314,LG Monitor,Monitor,LG,18000,24000,85,25.0
+315,Mechanical Keyboard,Keyboard,Keychron,6000,9000,200,33.3

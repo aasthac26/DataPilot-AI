@@ -1,0 +1,7 @@
+department_id,department_name,location,head_count_target,annual_budget_lakhs
+10,Engineering,Bangalore,40,500
+20,Marketing,Mumbai,20,150
+30,Sales,Delhi,30,200
+40,HR,Pune,15,80
+50,Finance,Mumbai,20,120
+60,Operations,Chennai,25,180
