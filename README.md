@@ -51,10 +51,10 @@ Every generated SQL is validated for safety before execution. DROP, DELETE, UPDA
 
 ## 🏗️ Architecture
 
-```
+
 ![DataPilot AI Architecture](assets/architecture.png)
 
-```
+
 ## 🚀 Quick Start
 
 ### 1. Clone the repo
