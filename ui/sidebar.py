@@ -42,7 +42,7 @@ def render_sidebar():
         if st.session_state.get("schema"):
             schema = st.session_state["schema"]
             st.divider()
-            st.subheader("📋 Dataset Info")
+            st.subheader("Dataset Info")
             st.markdown(format_schema_badge(schema))
 
             with st.expander("View Schema", expanded=False):
@@ -67,7 +67,7 @@ def render_sidebar():
 
             # Clear / reset
             st.divider()
-            if st.button("🗑️ Clear & Upload New File", use_container_width=True):
+            if st.button("Clear & Upload New File", use_container_width=True):
                 _clear_session()
                 st.rerun()
 
@@ -117,7 +117,7 @@ def _handle_upload(uploaded_file):
             st.session_state["uploaded_filename"] = uploaded_file.name
             st.session_state["chat_history"] = []    # Reset chat on new upload
 
-            st.success(f"✅ Loaded **{table_name}** — {len(df):,} rows, {len(df.columns)} columns")
+            st.success(f"Loaded **{table_name}** — {len(df):,} rows, {len(df.columns)} columns")
 
         except Exception as e:
             st.error(f"Upload failed: {e}")

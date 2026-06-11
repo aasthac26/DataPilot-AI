@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ── Config ────────────────────────────────────────────────────────────────────
-MODEL = "llama3-70b-8192"
+MODEL = "llama-3.3-70b-versatile"
 MAX_TOKENS = 1024
 TEMPERATURE = 0.1   # Low temperature = more deterministic SQL output
 

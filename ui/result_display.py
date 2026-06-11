@@ -26,14 +26,14 @@ def render_result(
     """
 
     # ── 1. SQL Expander ───────────────────────────────────────────────────────
-    with st.expander("🔍 View Generated SQL", expanded=False):
+    with st.expander("View Generated SQL", expanded=False):
         st.code(sql, language="sql")
 
     # ── 2. Chart or Table ─────────────────────────────────────────────────────
     if figure is not None:
         st.plotly_chart(figure, use_container_width=True)
         # Show the underlying data in a collapsed expander
-        with st.expander(f"📄 View Raw Data ({len(df):,} rows)", expanded=False):
+        with st.expander(f"View Raw Data ({len(df):,} rows)", expanded=False):
             st.dataframe(df, use_container_width=True, hide_index=True)
     else:
         # No chart — show plain table
