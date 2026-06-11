@@ -54,7 +54,7 @@ Every generated SQL is validated for safety before execution. DROP, DELETE, UPDA
 ```
 <img width="607" height="546" alt="image" src="https://github.com/user-attachments/assets/cee38dfd-271b-4225-8a53-779831c7da5e" />
 
-
+```
 ## 🚀 Quick Start
 
 ### 1. Clone the repo
