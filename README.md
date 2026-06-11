@@ -35,8 +35,6 @@ DataPilot: Generates SQL → Executes → Charts → Insights
 <img width="1915" height="905" alt="image" src="https://github.com/user-attachments/assets/de57461e-c911-4eb6-a36d-96912887f059" />
 
 
----
-
 ## ✨ Features
 
 ### 🧠 Natural Language → SQL
